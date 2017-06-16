@@ -7,8 +7,7 @@ use Omnipay\Common\Currency;
 
 class CompletePurchaseRequest extends AbstractRequest
 {
-    //protected $endpoint = 'https://www.mobile88.com/epayment/enquiry.asp';
-    protected $endpoint = 'http://www.antwebstudio.com/sandbox/ipay88/?merchant=abc&key=123';
+    protected $endpoint = 'https://www.mobile88.com/epayment/enquiry.asp';
 
     public function getData()
     {
@@ -31,7 +30,9 @@ class CompletePurchaseRequest extends AbstractRequest
 
     public function sendData($data)
     {
-        $data['ReQueryStatus'] = $this->httpClient->post($this->endpoint, null, [
+		$endpoint = $this->getTestMode() ? $this->getSandboxRequeryUrl() : $this->endpoint;
+		
+        $data['ReQueryStatus'] = $this->httpClient->post($endpoint, null, [
             'MerchantCode' => $this->getMerchantCode(),
             'RefNo' => $data['RefNo'],
             'Amount' => $data['Amount'],

@@ -34,6 +34,33 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('merchantCode', $merchantCode);
     }
+	
+	public function getSandboxUrl() {
+		return $this->getParameter('sandboxUrl');
+    }
+
+    public function setSandboxUrl($sandboxUrl)
+    {
+        return $this->setParameter('sandboxUrl', $sandboxUrl);
+    }
+	
+	public function getSandboxRequeryUrl() {
+		return $this->getParameter('sandboxRequeryUrl');
+    }
+
+    public function setSandboxRequeryUrl($sandboxUrl)
+    {
+        return $this->setParameter('sandboxRequeryUrl', $sandboxUrl);
+    }
+	
+	public function getSandbox() {
+		return $this->getParameter('sandbox');
+    }
+
+    public function setSandbox($sandbox)
+    {
+        return $this->setParameter('sandbox', $sandbox);
+    }
 
     protected function guardParameters()
     {
