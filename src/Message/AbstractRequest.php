@@ -61,6 +61,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('sandbox', $sandbox);
     }
+	
+	public function getRequeryNeeded() {
+		return $this->getParameter('requeryNeeded');
+    }
+
+    public function setRequeryNeeded($requeryNeeded)
+    {
+        return $this->setParameter('requeryNeeded', $requeryNeeded);
+    }
 
     protected function guardParameters()
     {

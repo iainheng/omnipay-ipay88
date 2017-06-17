@@ -38,17 +38,15 @@ class CompletePurchaseResponse extends AbstractResponse
             $this->status = false;
             return;
         }
+		
+		if ($this->getRequest()->getRequeryNeeded()) {
 
-        $this->message =
-            isset($this->reQueryResponse[$this->data['ReQueryStatus']]) ? $this->reQueryResponse[$this->data['ReQueryStatus']] : '';
+			$this->message = isset($this->reQueryResponse[$this->data['ReQueryStatus']]) ? $this->reQueryResponse[$this->data['ReQueryStatus']] : $this->data['ReQueryStatus'];
 
-        if ('00' == $this->data['ReQueryStatus']) {
-            $this->status = true;
-            return;
-        }
-
-        $this->status = false;
-        return;
+			$this->status = '00' == $this->data['ReQueryStatus'];
+		} else {
+			$this->status =  $this->data['Status'] == 1;
+		}
     }
 
     public function isSuccessful()

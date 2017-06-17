@@ -24,6 +24,7 @@ class Gateway extends AbstractGateway
             'merchantCode' => '',
             'backendUrl' => '',
 			'sandbox' => false,
+			'requeryNeeded' => true,
         ];
     }
 
@@ -72,6 +73,15 @@ class Gateway extends AbstractGateway
 	public function setSandbox($sandbox) {
 		return $this->setParameter('sandbox', $sandbox);
 	}
+	
+	public function getRequeryNeeded() {
+		return $this->getParameter('requeryNeeded');
+    }
+
+    public function setRequeryNeeded($requeryNeeded)
+    {
+        return $this->setParameter('requeryNeeded', $requeryNeeded);
+    }
 	
 	public function getSandboxRequeryUrl() {
 		return $this->getParameter('sandboxRequeryUrl');
