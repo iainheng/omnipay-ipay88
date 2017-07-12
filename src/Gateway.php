@@ -91,6 +91,11 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('sandboxRequeryUrl', $sandboxUrl);
     }
+	
+	public function requery(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\IPay88\Message\RequeryRequest', $parameters);
+    }
 
     public function purchase(array $parameters = array())
     {
