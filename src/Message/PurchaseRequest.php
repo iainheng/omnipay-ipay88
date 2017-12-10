@@ -20,7 +20,8 @@ class PurchaseRequest extends AbstractRequest
             'UserEmail' => $this->getCard()->getEmail(),
             'UserContact' => $this->getCard()->getNumber(),
             'Remark' => '',
-            'Lang' => '',
+            'Lang' => 'UTF-8',
+            'SignatureType' => 'SHA256',
             'Signature' => $this->signature(
                 $this->getMerchantKey(),
                 $this->getMerchantCode(),
