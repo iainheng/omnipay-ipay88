@@ -1,5 +1,5 @@
 {
-    "name": "inspirenmy/omnipay-ipay88",
+    "name": "nextbyte/omnipay-ipay88",
     "description": "iPay88 gateway for Omnipay payment processing library",
     "keywords": [
         "gateway",
@@ -11,8 +11,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Mlax Wong",
-            "email": "mlax@inspiren.my"
+            "name": "Iain H.",
+            "email": "hengcs@nextbyte.xyz"
         }
     ],
     "require": {
