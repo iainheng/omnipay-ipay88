@@ -17,7 +17,7 @@
     ],
     "minimum-stability" : "dev",
     "require": {
-        "omnipay/common": "dev-master"
+        "omnipay/common": "^3"
     },
     "require-dev": {
         "omnipay/tests": "^3"
