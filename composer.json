@@ -15,6 +15,7 @@
             "email": "hengcs@nextbyte.xyz"
         }
     ],
+    "minimum-stability" : "dev",
     "require": {
         "omnipay/common": "dev-master"
     },
