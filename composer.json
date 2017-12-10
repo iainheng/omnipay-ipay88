@@ -15,12 +15,11 @@
             "email": "hengcs@nextbyte.xyz"
         }
     ],
-    "minimum-stability" : "dev",
     "require": {
-        "omnipay/common": "^3"
+        "omnipay/common": "^3@dev"
     },
     "require-dev": {
-        "omnipay/tests": "^3"
+        "omnipay/tests": "^3@dev"
     },
     "autoload": {
         "psr-4": { "Omnipay\\IPay88\\" : "src/" }
