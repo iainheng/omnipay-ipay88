@@ -15,12 +15,11 @@
             "email": "mlax@inspiren.my"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
-        "omnipay/common": "~2.0"
+        "omnipay/common": "dev-master"
     },
     "require-dev": {
-        "omnipay/tests": "~2.0"
+        "omnipay/tests": "^3"
     },
     "autoload": {
         "psr-4": { "Omnipay\\IPay88\\" : "src/" }
