@@ -37,7 +37,7 @@ class CompletePurchaseRequest extends AbstractRequest
 				'MerchantCode' => $this->getMerchantCode(),
 				'RefNo' => $data['RefNo'],
 				'Amount' => $data['Amount'],
-			])->send()->getBody(true);
+			])->getBody();
 		} else {
 			$data = $this->getData();
 		}
