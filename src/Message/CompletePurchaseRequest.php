@@ -33,11 +33,14 @@ class CompletePurchaseRequest extends AbstractRequest
 		if ($this->getRequeryNeeded()) {
 			$endpoint = $this->getTestMode() ? $this->getSandboxRequeryUrl() : $this->endpoint;
 			
-			$data['ReQueryStatus'] = $this->httpClient->post($endpoint, [], [
+			$data['ReQueryStatus'] = $this->httpClient->post($endpoint, [
+			    'Content-Type' => 'application/x-www-form-urlencoded'
+            ], [
 				'MerchantCode' => $this->getMerchantCode(),
 				'RefNo' => $data['RefNo'],
 				'Amount' => $data['Amount'],
-			])->getBody();
+			])->getBody()->getContents();
+
 		} else {
 			$data = $this->getData();
 		}
