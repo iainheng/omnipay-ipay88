@@ -20,7 +20,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
     private $invalidSignatureMsg = 'Invalid signature returned from iPay88';
 
-    protected $message;
+    protected $message = 'Payment successful';
 
     protected $status;
 
