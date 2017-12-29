@@ -20,13 +20,15 @@ class CompletePurchaseResponse extends AbstractResponse
 
     private $invalidSignatureMsg = 'Invalid signature returned from iPay88';
 
-    protected $message = 'Payment successful';
+    protected $message;
 
     protected $status;
 
     public function __construct(RequestInterface $request, $data)
     {
         parent::__construct($request, $data);
+
+        $this->message = 'Payment successful';
 
         if ($this->data['Status'] != 1) {
             $this->message = $this->data['ErrDesc'];
@@ -41,11 +43,11 @@ class CompletePurchaseResponse extends AbstractResponse
         }
 		
 		if ($this->getRequest()->getRequeryNeeded()) {
-
 			$this->message = isset($this->reQueryResponse[$this->data['ReQueryStatus']]) ? $this->reQueryResponse[$this->data['ReQueryStatus']] : $this->data['ReQueryStatus'];
 
 			$this->status = '00' == $this->data['ReQueryStatus'];
 		} else {
+            $this->message = 'Payment successful.';
 			$this->status =  $this->data['Status'] == 1;
 		}
     }
