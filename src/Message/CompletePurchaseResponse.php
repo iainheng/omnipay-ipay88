@@ -28,8 +28,6 @@ class CompletePurchaseResponse extends AbstractResponse
     {
         parent::__construct($request, $data);
 
-        $this->message = 'Payment successful';
-
         if ($this->data['Status'] != 1) {
             $this->message = $this->data['ErrDesc'];
             $this->status = false;
@@ -47,7 +45,7 @@ class CompletePurchaseResponse extends AbstractResponse
 
 			$this->status = '00' == $this->data['ReQueryStatus'];
 		} else {
-            $this->message = 'Payment successful.';
+            $this->message = 'Payment successful';
 			$this->status =  $this->data['Status'] == 1;
 		}
     }
