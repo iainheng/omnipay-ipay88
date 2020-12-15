@@ -1,4 +1,5 @@
 <?php
+
 namespace Omnipay\IPay88;
 
 use Omnipay\Common\AbstractGateway;
@@ -23,8 +24,9 @@ class Gateway extends AbstractGateway
             'merchantKey' => '',
             'merchantCode' => '',
             'backendUrl' => '',
-			'sandbox' => false,
-			'requeryNeeded' => true,
+            'sandbox' => false,
+            'requeryNeeded' => true,
+            'notifyOkText' => 'RECEIVEOK',
         ];
     }
 
@@ -57,42 +59,48 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('backendUrl', $backendUrl);
     }
-	
-	public function getSandboxUrl() {
-		return $this->getParameter('sandboxUrl');
-	}
-	
-	public function setSandboxUrl($sandboxUrl) {
-		return $this->setParameter('sandboxUrl', $sandboxUrl);
-	}
-	
-	public function getSandbox() {
-		return $this->getParameter('sandbox');
-	}
-	
-	public function setSandbox($sandbox) {
-		return $this->setParameter('sandbox', $sandbox);
-	}
-	
-	public function getRequeryNeeded() {
-		return $this->getParameter('requeryNeeded');
+
+    public function getSandboxUrl()
+    {
+        return $this->getParameter('sandboxUrl');
+    }
+
+    public function setSandboxUrl($sandboxUrl)
+    {
+        return $this->setParameter('sandboxUrl', $sandboxUrl);
+    }
+
+    public function getSandbox()
+    {
+        return $this->getParameter('sandbox');
+    }
+
+    public function setSandbox($sandbox)
+    {
+        return $this->setParameter('sandbox', $sandbox);
+    }
+
+    public function getRequeryNeeded()
+    {
+        return $this->getParameter('requeryNeeded');
     }
 
     public function setRequeryNeeded($requeryNeeded)
     {
         return $this->setParameter('requeryNeeded', $requeryNeeded);
     }
-	
-	public function getSandboxRequeryUrl() {
-		return $this->getParameter('sandboxRequeryUrl');
+
+    public function getSandboxRequeryUrl()
+    {
+        return $this->getParameter('sandboxRequeryUrl');
     }
 
     public function setSandboxRequeryUrl($sandboxUrl)
     {
         return $this->setParameter('sandboxRequeryUrl', $sandboxUrl);
     }
-	
-	public function requery(array $parameters = array())
+
+    public function requery(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\IPay88\Message\RequeryRequest', $parameters);
     }
