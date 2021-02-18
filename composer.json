@@ -18,10 +18,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "omnipay/common": "^3@dev"
+        "omnipay/common": "^3"
     },
     "require-dev": {
-        "omnipay/tests": "^3@dev"
+        "omnipay/tests": "^3"
     },
     "autoload": {
         "psr-4": { "Omnipay\\IPay88\\" : "src/" }
