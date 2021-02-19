@@ -32,7 +32,7 @@ class CompletePurchaseRequest extends AbstractRequest
     {
 		if ($this->getRequeryNeeded()) {
 			$endpoint = $this->getTestMode() ? $this->getSandboxRequeryUrl() : $this->endpoint;
-			
+
 			$data['ReQueryStatus'] = $this->httpClient->post($endpoint, [
 			    'Content-Type' => 'application/x-www-form-urlencoded'
             ], [
@@ -46,6 +46,23 @@ class CompletePurchaseRequest extends AbstractRequest
 		}
 
         return $this->response = new CompletePurchaseResponse($this, $data);
+    }
+
+    public function isValid()
+    {
+        $data = $this->getData();
+
+        $computedHash = $this->signature(
+            $this->getMerchantKey(),
+            $this->getMerchantCode(),
+            $data['PaymentId'],
+            $data['RefNo'],
+            $data['Amount'],
+            $data['Currency'],
+            $data['Status']
+        );
+
+        return $computedHash === $data['Signature'];
     }
 
     protected function signature($merchantKey, $merchantCode, $paymentId, $refNo, $amount, $currency, $status)

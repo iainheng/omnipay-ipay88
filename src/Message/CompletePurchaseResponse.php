@@ -34,12 +34,13 @@ class CompletePurchaseResponse extends AbstractResponse
             return;
         }
 
-        if ($this->data['Signature'] != $this->data['ComputedSignature']) {
+//        if ($this->data['Signature'] != $this->data['ComputedSignature']) {
+        if (!$this->getRequest()->isValid()) {
             $this->message = $this->invalidSignatureMsg;
             $this->status = false;
             return;
         }
-		
+
 		if ($this->getRequest()->getRequeryNeeded()) {
 			$this->message = isset($this->reQueryResponse[$this->data['ReQueryStatus']]) ? $this->reQueryResponse[$this->data['ReQueryStatus']] : $this->data['ReQueryStatus'];
 

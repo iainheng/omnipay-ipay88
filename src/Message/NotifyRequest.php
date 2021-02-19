@@ -56,19 +56,23 @@ class NotifyRequest extends AbstractRequest implements NotificationInterface
     public function isValid()
     {
         $computedHash = $this->signature(
-            $this->getMerchantSecret(),
-            $this->data['status_id'],
-            $this->data['order_id'],
-            $this->data['transaction_id'],
-            $this->data['msg']
+            $this->getMerchantKey(),
+            $this->getMerchantCode(),
+            $this->data['PaymentId'],
+            $this->data['RefNo'],
+            $this->data['Amount'],
+            $this->data['Currency'],
+            $this->data['Status']
         );
 
-        return $computedHash === $this->data['hash'];
+        return $computedHash === $this->data['Signature'];
     }
 
-    protected function signature($secretKey, $status, $orderId, $remoteTransactionId, $msg)
+    protected function signature($merchantKey, $merchantCode, $paymentId, $refNo, $amount, $currency, $status)
     {
-        $paramsInArray = [$secretKey, $status, $orderId, $remoteTransactionId, $msg];
+        $amount = str_replace([',', '.'], '', $amount);
+
+        $paramsInArray = [$merchantKey, $merchantCode, $paymentId, $refNo, $amount, $currency, $status];
 
         return $this->createSignatureFromString(implode('', $paramsInArray));
     }
