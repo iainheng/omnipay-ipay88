@@ -3,13 +3,23 @@
 namespace Omnipay\IPay88;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\IPay88\Message\NotifyRequest;
 
 /**
- * iPay8 Gateway Driver for Omnipay
+ * iPay88 Gateway Driver for Omnipay
  *
  * This driver is based on
  * Online Payment Switching Gateway Technical Specification Version 1.6.1
  * @link https://drive.google.com/file/d/0B4YUBYSgSzmAbGpjUXMyMWx6S2s/view?usp=sharing
+ * @method \Omnipay\Common\Message\RequestInterface authorize(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface fetchTransaction(array $options = [])
+ * @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
+ * @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
  */
 class Gateway extends AbstractGateway
 {
@@ -113,6 +123,27 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\IPay88\Message\CompletePurchaseRequest', $parameters);
+    }
+
+    /**
+     * Accept an incoming notification (a ServerRequest).
+     * This API supports the notification responses as a suplement to the direct server responses.
+     */
+    public function acceptNotification(array $parameters = array())
+    {
+        return $this->createRequest(NotifyRequest::class, $parameters);
+    }
+
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface fetchTransaction(array $options = [])
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
+        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
     }
 
 }

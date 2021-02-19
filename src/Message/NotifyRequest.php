@@ -5,7 +5,7 @@ namespace Omnipay\IPay88\Message;
 use Omnipay\Common\Message\NotificationInterface;
 
 /**
- * Capture the incoming Transaction Status message from senangPay.
+ * Capture the incoming Transaction Status message from Ipay88.
  */
 class NotifyRequest extends AbstractRequest implements NotificationInterface
 {
