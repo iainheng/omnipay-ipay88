@@ -34,7 +34,7 @@ class PurchaseResponseTest extends TestCase
         $this->assertTrue($response->isRedirect());
         $this->assertNull($response->getMessage());
         $this->assertSame('A00000001', $response->getTransactionId());
-        $this->assertSame('https://www.mobile88.com/ePayment/entry.asp', $response->getRedirectUrl());
+        $this->assertSame('https://payment.ipay88.com.my/ePayment/entry.asp', $response->getRedirectUrl());
         $this->assertSame('POST', $response->getRedirectMethod());
         $this->assertEquals($data, $response->getRedirectData());
     }
