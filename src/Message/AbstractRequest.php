@@ -34,7 +34,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('merchantCode', $merchantCode);
     }
-	
+
 	public function getSandboxUrl() {
 		return $this->getParameter('sandboxUrl');
     }
@@ -43,7 +43,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('sandboxUrl', $sandboxUrl);
     }
-	
+
 	public function getSandboxRequeryUrl() {
 		return $this->getParameter('sandboxRequeryUrl');
     }
@@ -52,7 +52,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('sandboxRequeryUrl', $sandboxUrl);
     }
-	
+
 	public function getSandbox() {
 		return $this->getParameter('sandbox');
     }
@@ -61,7 +61,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('sandbox', $sandbox);
     }
-	
+
 	public function getRequeryNeeded() {
 		return $this->getParameter('requeryNeeded');
     }
@@ -85,7 +85,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     protected function createSignatureFromString($fullStringToHash)
     {
-        return hash('sha256', $fullStringToHash); //base64_encode($this->hex2bin(sha1($fullStringToHash)));
+        return hash_hmac('sha512', $fullStringToHash, $this->getMerchantKey()); //base64_encode($this->hex2bin(sha1($fullStringToHash)));
     }
 
     private function hex2bin($hexSource)
